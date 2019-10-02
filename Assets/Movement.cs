@@ -23,6 +23,6 @@ public class Movement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-        rigBod.velocity = new Vector2(x, rigBod.velocity.y);
+        rigBod.velocity = new Vector2(x * speed, rigBod.velocity.y);
     }
 }

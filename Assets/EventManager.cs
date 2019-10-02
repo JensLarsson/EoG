@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public struct EventParameter //Add more Event Parameters here if needed
+[System.Serializable]
+public class EventParameter //Add more Event Parameter Variables here if needed
 {
     public string stringParam;
     public int intParam;
+    public float floatParam;
+    public Color colourParam = Color.white;
+    public Vector2 posParam;
 }
 // Right now when creating and subscribing Events, the function delegatet needs to pass an EventParameter, 
 // I will add a Function Overloads to remove this requirement in the future
