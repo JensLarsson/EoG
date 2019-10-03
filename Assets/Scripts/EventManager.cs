@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 
 [System.Serializable]
@@ -12,48 +13,52 @@ public class EventParameter //Add more Event Parameter Variables here if needed
     public Color colourParam = Color.white;
     public Vector2 posParam;
 }
-// Right now when creating and subscribing Events, the function delegatet needs to pass an EventParameter, 
+// Right now when creating and subscribing Events, the function delegated needs to pass an EventParameter! 
 // I will add a Function Overloads to remove this requirement in the future
 
 public static class EventManager
 {
-    private static Dictionary<string, Action<EventParameter>> eventDicionary = new Dictionary<string, Action<EventParameter>>();
+    //Actions with parameters
+    private static Dictionary<string, Action<EventParameter>> eventDicionaryA = new Dictionary<string, Action<EventParameter>>();
+
+    //UnityActions with parameters
+    private static Dictionary<string, UnityEvent<EventParameter>> eventDictionaryB = new Dictionary<string, UnityEvent<EventParameter>>();
 
     //Events subscribed to needs to be unsubsribed from as well, do this by adding a call for UnSubscribe() on the object's OnDissable call
     public static void Subscribe(string eventName, Action<EventParameter> subscription)
     {
         Action<EventParameter> thisEvent;
-        if (eventDicionary.TryGetValue(eventName, out thisEvent))
+        if (eventDicionaryA.TryGetValue(eventName, out thisEvent))
         {
             //Add Event to an existing Action
             thisEvent += subscription;
             //Update Dictionary
-            eventDicionary[eventName] = thisEvent;
+            eventDicionaryA[eventName] = thisEvent;
         }
         else
         {
             thisEvent += subscription;
             //Create new action for the Dictionary
-            eventDicionary.Add(eventName, thisEvent);
+            eventDicionaryA.Add(eventName, thisEvent);
         }
     }
 
     public static void UnSubscribe(string eventName, Action<EventParameter> subscription)
     {
         Action<EventParameter> thisEvent;
-        if (eventDicionary.TryGetValue(eventName, out thisEvent))
+        if (eventDicionaryA.TryGetValue(eventName, out thisEvent))
         {
             //Removes Event from existing Action
             thisEvent -= subscription;
             //Updates Dictionary
-            eventDicionary[eventName] = thisEvent;
+            eventDicionaryA[eventName] = thisEvent;
         }
     }
 
     public static void TriggerEvent(string eventName, EventParameter param)
     {
         Action<EventParameter> thisEvent;
-        if (eventDicionary.TryGetValue(eventName, out thisEvent))
+        if (eventDicionaryA.TryGetValue(eventName, out thisEvent))
         {
             thisEvent.Invoke(param);
         }

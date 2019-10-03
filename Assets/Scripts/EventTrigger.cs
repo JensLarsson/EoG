@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trigger : MonoBehaviour
+public class EventTrigger : MonoBehaviour
 {
+    [Header("Event Data")]
     public string eventCall;
     public EventParameter eventParameter;
-    [SerializeField] actions action = actions.Nothing;
+
+    [Header("Trigger Options")]
+    [SerializeField] actions postTriggerAction = actions.Nothing;
     enum actions { Nothing = 0, Delete, DeactivateTrigger };
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
             EventManager.TriggerEvent(eventCall, eventParameter);
-            switch (action)
+            switch (postTriggerAction)
             {
                 case actions.Delete:
                     Destroy(this.gameObject);
@@ -24,8 +29,6 @@ public class Trigger : MonoBehaviour
                     Destroy(this);
                     break;
             }
-
-
         }
     }
 }

@@ -417,7 +417,7 @@ MonoBehaviour:
     floatParam: 3
     colourParam: {r: 0.9433962, g: 0.8036279, b: 0.30704877, a: 1}
     posParam: {x: 0, y: 0}
-  action: 0
+  postTriggerAction: 0
 --- !u!4 &478681273
 Transform:
   m_ObjectHideFlags: 0
