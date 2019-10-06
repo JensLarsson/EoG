@@ -10,18 +10,19 @@ public class EventTrigger : MonoBehaviour
 
     [Header("Trigger Options")]
     [SerializeField] actions postTriggerAction = actions.Nothing;
-    enum actions { Nothing = 0, Delete, DeactivateTrigger };
-
-
-
+    enum actions { Nothing = 0, DeleteObject, DeactivateTrigger };
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            EventManager.TriggerEvent(eventCall, eventParameter);
+            if (eventCall != "")
+            {
+                EventManager.TriggerEvent(eventCall, eventParameter);
+            }
             switch (postTriggerAction)
             {
-                case actions.Delete:
+                case actions.DeleteObject:
                     Destroy(this.gameObject);
                     break;
 
