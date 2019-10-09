@@ -37,8 +37,29 @@ public class Collision : MonoBehaviour
         Vector2 velocity = rigBod.velocity;
         CollisionInfo collisions = new CollisionInfo();
         HorizontalCollisions(velocity, ref collisions);
-        VerticalCollisions(velocity, ref collisions);
+        VerticalCollisions(1, ref collisions);
+        VerticalCollisions(-1, ref collisions);
         return collisions;
+    }
+
+    void VerticalCollisions(float direction, ref CollisionInfo collisions)
+    {             //vertical direction (1 eller -1)
+        float rayLength = collisionDistance + skinWidth;
+        for (int i = 0; i < verticalRayCount; i++)
+        {
+            Vector2 rayOrigin = (direction == -1) ? raycastOrigins.botLeft : raycastOrigins.topLeft;   //sätter raycasts Start till toppen eller botten av BoxColliderns
+            rayOrigin += Vector2.right * (verticalRaySpacing * i);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * direction, rayLength, collisionMask);
+
+            Debug.DrawRay(rayOrigin, Vector2.up * direction * rayLength, Color.red);
+
+            if (hit)
+            {
+                rayLength = hit.distance;                             //Sätter rayLength till velocity, så att de inte letar efter object under kollisionen
+                if (direction < 0) collisions.below = true;
+                else collisions.above = true;
+            }
+        }
     }
 
     void VerticalCollisions(Vector3 velocity, ref CollisionInfo collisions)

@@ -29,11 +29,11 @@ public class Movement : MonoBehaviour
         if (Input.GetAxisRaw("Vertical") < 0)
         {
             StopCoroutine(Passthrough(0.0f));
-            StartCoroutine(Passthrough(0.5f));
+            StartCoroutine(Passthrough(0.3f));
         }
         Vector2 velocity = new Vector2(x * speed, y);
         CollisionInfo collInfo = collisions.getCollisions();
-        rigBod.velocity = velocity;
+        rigBod.velocity = velocity; 
         Gravity();
     }
 
