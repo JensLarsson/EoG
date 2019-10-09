@@ -28,8 +28,13 @@ public class Movement : MonoBehaviour
         }
         if (Input.GetAxisRaw("Vertical") < 0)
         {
-            StopCoroutine(Passthrough(0.0f));
-            StartCoroutine(Passthrough(0.3f));
+            //StopCoroutine(Passthrough(0.0f));
+            //StartCoroutine(Passthrough(0.3f));
+            this.gameObject.layer = 10; //MAGIC NUMBER FOR PlayerPassthrough layer
+        }
+        else
+        {
+            this.gameObject.layer = 8;  //MAGIC NUMBER FOR Player layer
         }
         Vector2 velocity = new Vector2(x * speed, y);
         CollisionInfo collInfo = collisions.getCollisions();
