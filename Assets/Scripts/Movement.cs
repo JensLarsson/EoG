@@ -26,19 +26,14 @@ public class Movement : MonoBehaviour
         {
             y = jumpForce;
         }
-        if (Input.GetAxisRaw("Vertical") < 0)
+        if (Input.GetKey(KeyCode.S))
         {
-            //StopCoroutine(Passthrough(0.0f));
-            //StartCoroutine(Passthrough(0.3f));
-            this.gameObject.layer = 10; //MAGIC NUMBER FOR PlayerPassthrough layer
-        }
-        else
-        {
-            this.gameObject.layer = 8;  //MAGIC NUMBER FOR Player layer
+            StopCoroutine(Passthrough(0.0f));
+            StartCoroutine(Passthrough(0.4f));
         }
         Vector2 velocity = new Vector2(x * speed, y);
         CollisionInfo collInfo = collisions.getCollisions();
-        rigBod.velocity = velocity; 
+        rigBod.velocity = velocity;
         Gravity();
     }
 
@@ -63,7 +58,7 @@ public class Movement : MonoBehaviour
     {
         if (rigBod.velocity.y < 0)
         {
-            rigBod.gravityScale = 2;
+            rigBod.gravityScale = 2.5f;
         }
         else
         {
