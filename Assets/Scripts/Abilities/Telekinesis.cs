@@ -13,6 +13,24 @@ public class Telekinesis : IAbility
         player = playerTransform;
     }
 
+    // Start is called before the first frame update
+    public void IStart()
+    {
+        EventParameter eParam = new EventParameter()
+        {
+            floatParam = maxRange
+        };
+        EventManager.TriggerEvent("SetRangeIndicator", eParam);
+    }
+    public void IDisable()
+    {
+        EventParameter eParam = new EventParameter()
+        {
+            floatParam = 0.0f
+        };
+        EventManager.TriggerEvent("SetRangeIndicator", eParam);
+    }
+
     public void IExecute()
     {
         if (grabbedObject == null)
@@ -21,22 +39,21 @@ public class Telekinesis : IAbility
 
             if (hit.collider != null && hit.collider.tag == "Grabbable")
             {
-                grabbedObject = hit.collider.transform;
-                grabbedObject.GetComponent<BoxCollider2D>().enabled = false;
+                if (Vector2.Distance(player.position, hit.collider.transform.position) < maxRange)
+                {
+                    grabbedObject = hit.collider.transform;
+                    grabbedObject.GetComponent<BoxCollider2D>().enabled = false;
+                }
             }
         }
         else
         {
             grabbedObject.GetComponent<BoxCollider2D>().enabled = true;
+            grabbedObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             grabbedObject = null;
         }
     }
 
-    // Start is called before the first frame update
-    public void IStart()
-    {
-
-    }
 
     // Update is called once per frame
     public void IUpdate()

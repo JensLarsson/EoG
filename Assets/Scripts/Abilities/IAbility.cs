@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 interface IAbility
 {
-    void IExecute();
+    void IExecute(); //This is unnecessary since the implementation could easily be implemented in IUpdate
     void IStart();
     void IUpdate();
+    void IDisable();
 }
 

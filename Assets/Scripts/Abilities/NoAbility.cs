@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class NoAbility : MonoBehaviour, IAbility
 {
+    public void IDisable()
+    {
+
+    }
+
     public void IExecute()
     {
         Debug.LogError("Hey, this ability does not have an implementation right now, sorry about that <3");

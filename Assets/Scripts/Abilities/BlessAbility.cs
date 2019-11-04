@@ -11,6 +11,11 @@ public class BlessAbility : MonoBehaviour, IAbility
         particles = p;
     }
 
+    public void IDisable()
+    {
+
+    }
+
     public void IExecute()
     {
 
@@ -18,7 +23,7 @@ public class BlessAbility : MonoBehaviour, IAbility
 
     public void IStart()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public void IUpdate()

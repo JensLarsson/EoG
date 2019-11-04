@@ -18,7 +18,15 @@ public class AbilityController : MonoBehaviour
         abilities[(int)Ability.None] = new NoAbility();
         abilities[(int)Ability.Tälékanenys] = new Telekinesis(this.transform);
         abilities[(int)Ability.Bless] = new BlessAbility(particles);
+
+        EventManager.Subscribe("ChangeAbility", ChangeAbility);
     }
+
+    private void OnDisable()
+    {
+        EventManager.UnSubscribe("ChangeAbility", ChangeAbility);
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -28,5 +36,21 @@ public class AbilityController : MonoBehaviour
             abilities[(int)ability].IExecute();
         }
         abilities[(int)ability].IUpdate();
+    }
+
+    public void ChangeAbility(Ability _ability)
+    {
+        abilities[(int)ability].IDisable();
+        ability = _ability;
+        abilities[(int)ability].IStart();
+    }
+    void ChangeAbility(EventParameter eParam)
+    {
+        if (eParam.intParam < abilities.Length)
+        {
+            abilities[(int)ability].IDisable();
+            ability = (Ability)eParam.intParam;
+            abilities[(int)ability].IStart();
+        }
     }
 }
