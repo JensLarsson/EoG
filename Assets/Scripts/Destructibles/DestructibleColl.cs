@@ -6,6 +6,7 @@ public class DestructibleColl : DestructibleObject
 {
     public override void takeDamage(AttackType attackType, int damage)
     {
+        Debug.Log("ouch!");
         base.takeDamage(attackType, damage);
     }
     public override void takeDamage(int damage)
@@ -20,7 +21,7 @@ public class DestructibleColl : DestructibleObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        takeDamage(1);
+        //takeDamage(1);
     }
     // Start is called before the first frame update
     void Start()

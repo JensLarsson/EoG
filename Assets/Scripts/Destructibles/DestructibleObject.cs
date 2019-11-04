@@ -10,7 +10,13 @@ public abstract class DestructibleObject : MonoBehaviour
     Physical,
     Fire
     };
-
+    public enum Faction
+    {
+        Terrain,
+        Player,
+        Enemy        
+    }
+    public Faction faction;
     public virtual void takeDamage(int damage)
     {
         health -= damage;

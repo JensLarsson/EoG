@@ -7,10 +7,11 @@ using UnityEngine;
 // Abilites should probably be remade to use monobehaviours, so that variables can be changed in the editor
 public class AbilityController : MonoBehaviour
 {
-    public enum Ability { None = 0, Tälékanenys, Bless };
+    public enum Ability { None = 0, Tälékanenys, Bless, Fireball };
     public Ability ability = Ability.None;
     IAbility[] abilities;
     public ParticleSystem particles; //Only used in the Bless ability, which only makes visuals right now
+    public GameObject fireball; //Only used in the fireball ability
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class AbilityController : MonoBehaviour
         abilities[(int)Ability.None] = new NoAbility();
         abilities[(int)Ability.Tälékanenys] = new Telekinesis(this.transform);
         abilities[(int)Ability.Bless] = new BlessAbility(particles);
+        abilities[(int)Ability.Fireball] = new FireBall(this.transform, fireball);
     }
 
     // Update is called once per frame
