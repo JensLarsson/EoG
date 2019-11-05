@@ -45,4 +45,9 @@ public class FireBall : DestructibleObject, IAbility
             grabbedObject.transform.position = player.position + Vector3.ClampMagnitude(mousePos - player.position, maxRange);
         }
     }
+
+    public void IDisable()
+    {
+
+    }
 }

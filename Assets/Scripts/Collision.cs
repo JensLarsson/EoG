@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public struct CollisionInfo
 {
     public bool above, below, left, right;
@@ -31,6 +32,7 @@ public class Collision : MonoBehaviour
         CalculateRaySpacing();
     }
 
+    //Returns CollisionInfo, which is a bunch of booleans which are true in case you're colliding with something (duh)    
     public CollisionInfo getCollisions()
     {
         UpdateRaycastOrigins();
@@ -119,7 +121,7 @@ public class Collision : MonoBehaviour
         raycastOrigins.topLeft = new Vector2(bounds.min.x, bounds.max.y);
         raycastOrigins.topRight = new Vector2(bounds.max.x, bounds.max.y);
     }
-    void CalculateRaySpacing()
+    public void CalculateRaySpacing()
     {
         Bounds bounds = collider.bounds;
         bounds.Expand(skinWidth * -2); //flyttar origin in skinwidth
