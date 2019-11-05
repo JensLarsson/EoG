@@ -12,6 +12,7 @@ public class vase : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = Color.blue;
             liquid = Liquid.Water;
+            GetComponent<Rigidbody2D>().mass = 2;
             Destroy(collision.gameObject);
         }
     }
