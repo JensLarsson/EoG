@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     public float jumpForce = 5.0f;
     Rigidbody2D rigBod;
     Collision collisions;
+    [HideInInspector] public bool faceingRight;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,10 @@ public class Movement : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float y = rigBod.velocity.y;
+
+        //sry for messing with your script, but i need this :P /Erik
+        if (x > 0) { faceingRight = true; }
+        else if(x < 0) { faceingRight = false;}
 
         if (Input.GetButtonDown("Jump"))
         {
