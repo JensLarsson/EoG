@@ -7,7 +7,7 @@ using UnityEngine;
 // Abilites should probably be remade to use monobehaviours, so that variables can be changed in the editor
 public class AbilityController : MonoBehaviour
 {
-    public enum Ability { None = 0, Tälékanenys, Bless, Fireball };
+    public enum Ability { None = 0, Tälékanenys, Bless, Fireball, RewindTime };
     public Ability ability = Ability.None;
     IAbility[] abilities;
     public ParticleSystem particles; //Only used in the Bless ability, which only makes visuals right now
@@ -20,6 +20,7 @@ public class AbilityController : MonoBehaviour
         abilities[(int)Ability.Tälékanenys] = new Telekinesis(this.transform);
         abilities[(int)Ability.Bless] = new BlessAbility(particles);
         abilities[(int)Ability.Fireball] = new FireBall(this.transform, fireball);
+        abilities[(int)Ability.RewindTime] = new RewindTime();
 
         EventManager.Subscribe("ChangeAbility", ChangeAbility);
     }
