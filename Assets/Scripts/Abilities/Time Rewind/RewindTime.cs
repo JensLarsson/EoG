@@ -8,6 +8,11 @@ public class RewindTime : IAbility
     {
     }
 
+    public void IDisable()
+    {
+
+    }
+
     public void IExecute()
     {
         RewindManager.Instance.rewind();
