@@ -5,8 +5,10 @@ using UnityEngine;
 public class Telekinesis : IAbility
 {
     Transform grabbedObject;
+    Rigidbody2D grabbedBody;
     Transform player;
     float maxRange = 4.0f;
+    int previousLayer;
 
     public Telekinesis(Transform playerTransform)
     {
@@ -33,7 +35,7 @@ public class Telekinesis : IAbility
 
     public void IExecute()
     {
-        if (grabbedObject == null)
+        if (grabbedBody == null)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
@@ -41,15 +43,17 @@ public class Telekinesis : IAbility
             {
                 if (Vector2.Distance(player.position, hit.collider.transform.position) < maxRange)
                 {
+                    grabbedBody = hit.collider.gameObject.GetComponent<Rigidbody2D>();
                     grabbedObject = hit.collider.transform;
-                    grabbedObject.GetComponent<BoxCollider2D>().enabled = false;
+                    previousLayer = grabbedObject.gameObject.layer;
+                    grabbedObject.gameObject.layer = 11; //Magic number for Grabbed Object layer
                 }
             }
         }
         else
         {
-            grabbedObject.GetComponent<BoxCollider2D>().enabled = true;
-            grabbedObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            grabbedObject.gameObject.layer = previousLayer;
+            grabbedBody = null;
             grabbedObject = null;
         }
     }
@@ -62,7 +66,17 @@ public class Telekinesis : IAbility
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
-            grabbedObject.transform.position = player.position + Vector3.ClampMagnitude(mousePos - player.position, maxRange);
+            Vector3 clampPos = Vector3.ClampMagnitude(mousePos - player.position, maxRange);
+            clampPos += player.transform.position;
+            clampPos = clampPos - grabbedObject.transform.position;
+            if (Vector3.Distance(Vector3.zero, clampPos) > 0.1f)
+            {
+                clampPos *= 10;
+            }
+
+            grabbedBody.velocity = clampPos;
+
+
         }
     }
 }
