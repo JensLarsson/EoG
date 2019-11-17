@@ -1003,7 +1003,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0b0c4f79fc9104cbb7e8c7e7a8c785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventCall: EyeColour
+  eventCalls:
+  - 
   eventParameter:
     stringParam: 
     intParam: 0
@@ -1099,7 +1100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0b0c4f79fc9104cbb7e8c7e7a8c785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventCall: 
+  eventCalls:
+  - 
   eventParameter:
     stringParam: 
     intParam: 0
@@ -1791,7 +1793,7 @@ GameObject:
   - component: {fileID: 779245700}
   - component: {fileID: 779245703}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Button (EventTrigger Example)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1809,11 +1811,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0b0c4f79fc9104cbb7e8c7e7a8c785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventCall: DestroyCage
+  eventCalls:
+  - StartTimer
   eventParameter:
-    stringParam: 
+    stringParam: DestroyCage
     intParam: 0
-    floatParam: 0
+    floatParam: 4
     colourParam: {r: 1, g: 1, b: 1, a: 1}
     posParam: {x: 0, y: 0}
     transformParam: {fileID: 0}
@@ -2172,7 +2175,7 @@ GameObject:
   - component: {fileID: 1192829302}
   - component: {fileID: 1192829301}
   m_Layer: 9
-  m_Name: Cage
+  m_Name: Cage (EventHolder Example)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
