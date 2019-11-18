@@ -16,9 +16,13 @@ public class Timer : MonoBehaviour
         EventManager.UnSubscribe("StartTimer", StartTimer);
     }
 
-    void StartTimer(EventParameter eParam)
+    public void StartTimer(EventParameter eParam)
     {
         StartCoroutine(RunTimer(eParam.floatParam, eParam));
+    }
+    public void StartTimer(float time, string eventCall)
+    {
+        StartCoroutine(RunTimer(time, eventCall));
     }
 
     IEnumerator RunTimer(float time, EventParameter eParam)
@@ -33,6 +37,20 @@ public class Timer : MonoBehaviour
         }
         text.enabled = false;
         EventManager.TriggerEvent(eParam.stringParam, eParam);
+    }
 
+    IEnumerator RunTimer(float time, string eventCall)
+    {
+        text.enabled = true;
+        float clock = 0.0f;
+        while (clock < time)
+        {
+            clock += Time.deltaTime;
+            text.text = ((float)System.Math.Round(clock * 100f) / 100f).ToString();
+            yield return null;
+        }
+        text.enabled = false;
+        EventParameter eParam = new EventParameter();
+        EventManager.TriggerEvent(eventCall, eParam);
     }
 }
