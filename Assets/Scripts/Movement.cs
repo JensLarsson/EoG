@@ -133,5 +133,4 @@ public class Movement : MonoBehaviour
             rigBod.gravityScale = 1;
         }
     }
-
 }
