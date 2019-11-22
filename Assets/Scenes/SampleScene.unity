@@ -1129,6 +1129,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   postTriggerAction: 0
   interactionType: 1
+--- !u!114 &509318764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509318757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7d574e8ebcbde42af40334f750e7ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2933,7 +2945,7 @@ GameObject:
   - component: {fileID: 1731194287}
   - component: {fileID: 1731194286}
   m_Layer: 0
-  m_Name: Rectangle
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2954,6 +2966,7 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
+  standSpeed: 120
 --- !u!114 &1731194287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3486,6 +3499,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Vase
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119089914069971373, guid: 5c74e5fff80a86d4c9ec090554fca97e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 9119089914069971361, guid: 5c74e5fff80a86d4c9ec090554fca97e,
         type: 3}

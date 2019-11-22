@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Telekinesis : IAbility
 {
+    IGrabbable grabbed;
     Transform grabbedObject;
     Rigidbody2D grabbedBody;
     Transform player;
@@ -39,7 +40,7 @@ public class Telekinesis : IAbility
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-            if (hit.collider != null && hit.collider.tag == "Grabbable")
+            if (hit.collider.gameObject.TryGetComponent<IGrabbable>(out grabbed))
             {
                 if (Vector2.Distance(player.position, hit.collider.transform.position) < maxRange)
                 {
@@ -47,6 +48,7 @@ public class Telekinesis : IAbility
                     grabbedObject = hit.collider.transform;
                     previousLayer = grabbedObject.gameObject.layer;
                     grabbedObject.gameObject.layer = 11; //Magic number for Grabbed Object layer
+                    grabbed.Grab();
                 }
             }
         }
@@ -55,6 +57,7 @@ public class Telekinesis : IAbility
             grabbedObject.gameObject.layer = previousLayer;
             grabbedBody = null;
             grabbedObject = null;
+            grabbed.Release();
         }
     }
 
