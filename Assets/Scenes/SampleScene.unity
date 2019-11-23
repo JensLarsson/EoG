@@ -631,7 +631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &303068051
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2965,8 +2965,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   standSpeed: 120
+  jumps: 1
 --- !u!114 &1731194287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2979,9 +2980,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07470249382b2b4182227107e8469c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   crawlingSpeed: 0.5
-  jumpForce: 5
+  jumpForce: 7.1
   increasedGravityScale: 2.5
 --- !u!114 &1731194288
 MonoBehaviour:

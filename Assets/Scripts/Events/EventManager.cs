@@ -68,4 +68,12 @@ public static class EventManager
             Debug.LogError($"event name: {eventName} not found in eventDictionary");
         }
     }
+
+    public static void PrintAllCalls()
+    {
+        foreach (KeyValuePair<string, Action<EventParameter>> call in eventDicionaryA)
+        {
+            Debug.Log(call.Key);
+        }
+    }
 }

@@ -29,6 +29,15 @@ public class MovementBase : MonoBehaviour
         CollisionInfo collInfo = collisions.getCollisions();
         rigBod.velocity = velocity;
     }
+    public void Jump()
+    {
+        if (collisions.getCollisions().below && rigBod.velocity.y < 0.01f)
+        {
+            Vector2 velocity = rigBod.velocity;
+            velocity.y += jumpForce;
+            rigBod.velocity = velocity;
+        }
+    }
     IEnumerator Passthrough(float time)
     {
         this.gameObject.layer = 10; //MAGIC NUMBER FOR PlayerPassthrough layer
