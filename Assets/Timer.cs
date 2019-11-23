@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         text = GetComponent<Text>();
+        text.enabled = false;
         EventManager.Subscribe("StartTimer", StartTimer);
     }
     private void OnDisable()

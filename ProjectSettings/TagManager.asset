@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Climb
-  - Grabbable
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -19,7 +19,7 @@ TagManager:
   - Obstacles
   - PlayerPassthrough
   - Grabbed
-  - 
+  - Enemy
   - 
   - 
   - 

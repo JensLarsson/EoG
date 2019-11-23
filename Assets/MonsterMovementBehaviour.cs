@@ -11,6 +11,7 @@ public class MonsterMovementBehaviour : MonoBehaviour, IGrabbable
     int direction = 1;
     public float standSpeed = 2.0f;
     public bool jumps = true;
+    public float localTime = 1;
     [Range(0.001f, 1.0f)] float rotationSnapMargin = 0.04f;
     public void Grab()
     {
@@ -26,7 +27,7 @@ public class MonsterMovementBehaviour : MonoBehaviour, IGrabbable
     {
         while (Mathf.Abs(transform.rotation.z) > rotationSnapMargin)
         {
-            transform.Rotate(new Vector3(0, 0, Time.deltaTime * standSpeed * direction));
+            transform.Rotate(new Vector3(0, 0, Time.deltaTime * localTime * standSpeed * direction));
             yield return null;
         }
         transform.rotation = new Quaternion();
@@ -37,12 +38,23 @@ public class MonsterMovementBehaviour : MonoBehaviour, IGrabbable
         collisions = GetComponent<Collision>();
         rigidBod = GetComponent<Rigidbody2D>();
     }
+
+    public void SetLocalTime(float f)
+    {
+        localTime = f;
+    }
+
     void Update()
     {
         CollisionInfo collInfo = collisions.getCollisions();
         direction = collInfo.right ? -1 : collInfo.left ? 1 : direction;
-        movement.Move(direction);
+        movement.Move(direction * localTime);
         if (jumps) Jump();
+    }
+    private void LateUpdate()
+    {
+        rigidBod.velocity = rigidBod.velocity * localTime;
+        Debug.Log(rigidBod.velocity);
     }
     void Jump()
     {
