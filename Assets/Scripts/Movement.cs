@@ -44,7 +44,6 @@ public class Movement : MonoBehaviour
         ManageCrawling(KeyCode.S);
         if (Input.GetButtonDown("Jump") && collisions.getCollisions().below) //Jumping
         {
-            EventManager.PrintAllCalls();
             if (!crawling)
             {
                 y = jumpForce;
