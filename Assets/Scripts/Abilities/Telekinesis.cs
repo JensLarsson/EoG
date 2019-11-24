@@ -10,6 +10,7 @@ public class Telekinesis : IAbility
     Transform player;
     float maxRange = 4.0f;
     int previousLayer;
+    private float uneditedSpeed; //temp
 
     public Telekinesis(Transform playerTransform)
     {
@@ -40,7 +41,7 @@ public class Telekinesis : IAbility
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-            if (hit.collider.gameObject.TryGetComponent<IGrabbable>(out grabbed))
+            if (hit.collider != null && hit.collider.gameObject.TryGetComponent<IGrabbable>(out grabbed))
             {
                 if (Vector2.Distance(player.position, hit.collider.transform.position) < maxRange)
                 {
@@ -49,6 +50,14 @@ public class Telekinesis : IAbility
                     previousLayer = grabbedObject.gameObject.layer;
                     grabbedObject.gameObject.layer = 11; //Magic number for Grabbed Object layer
                     grabbed.Grab();
+                    var grabEffect = grabbed.GetGrabEffect();
+                    if (grabEffect.Item1 == Grabbable.GrabEffect.SlowDown)
+                    { //This is dumb and should be changed
+                        Movement movement = player.gameObject.GetComponent<Movement>();
+                        Debug.Log(grabEffect.Item2);
+                        uneditedSpeed = movement.speed;
+                        movement.speed = uneditedSpeed * (1 / grabEffect.Item2);
+                    }
                 }
             }
         }
@@ -58,6 +67,7 @@ public class Telekinesis : IAbility
             grabbedBody = null;
             grabbedObject = null;
             grabbed.Release();
+            player.gameObject.GetComponent<Movement>().speed = uneditedSpeed;
         }
     }
 

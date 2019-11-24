@@ -2,23 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+[System.Serializable]
+public class EventBox
+{
+    public string subscriptionName;
+    public UnityEvent action;
+    public void TriggerEvent(EventParameter eventParam)
+    {
+        action.Invoke();
+    }
+}
 
 public class EventHolder : MonoBehaviour
 {
-    public string subscriptionName;
-    public UnityEvent actions;
-
+    public EventBox[] events;
     private void OnEnable()
     {
-        EventManager.Subscribe(subscriptionName, TriggerEvent);
+        for (int i = 0; i < events.Length; i++)
+        {
+            EventManager.Subscribe(events[i].subscriptionName, events[i].TriggerEvent);
+        }
     }
     private void OnDisable()
     {
-
-        EventManager.UnSubscribe(subscriptionName, TriggerEvent);
-    }
-    void TriggerEvent(EventParameter eventParam)
-    {
-        actions.Invoke();
+        for (int i = 0; i < events.Length; i++)
+        {
+            EventManager.UnSubscribe(events[i].subscriptionName, events[i].TriggerEvent);
+        }
     }
 }

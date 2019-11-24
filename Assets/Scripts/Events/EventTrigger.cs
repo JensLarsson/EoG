@@ -25,7 +25,7 @@ public class EventTrigger : MonoBehaviour
         {
             if (eventCall != "")
             {
-                if (eventParameter.timerParam.StartCall == "")
+                if (eventParameter.timerParam.EndCall == "")
                 {
                     EventManager.TriggerEvent(eventCall, eventParameter);
                     action.Invoke();

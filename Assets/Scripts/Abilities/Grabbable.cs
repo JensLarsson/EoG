@@ -5,9 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Grabbable : MonoBehaviour, IGrabbable
 {
-    public int GrabEffect()
+    public enum GrabEffect { NoEffect = 0, SlowDown };
+
+
+    public (GrabEffect, float) GetGrabEffect()
     {
-        return 0;
+        return (GrabEffect.NoEffect, 0.0f);
     }
 
     public void Grab()

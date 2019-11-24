@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterMovementBehaviour : MonoBehaviour, IGrabbable
+public class MonsterBehaviour : MonoBehaviour, IGrabbable
 {
     public LayerMask collisionMask;
     Collision collisions;
@@ -11,7 +11,9 @@ public class MonsterMovementBehaviour : MonoBehaviour, IGrabbable
     int direction = 1;
     public float standSpeed = 2.0f;
     public bool jumps = true;
-    public float localTime = 1;
+    public Grabbable.GrabEffect grabEffect = Grabbable.GrabEffect.NoEffect;
+    public float grabVariable = 2.0f;
+    public float localTime = 1; //This is dumb and didn't work, should be changed
     [Range(0.001f, 1.0f)] float rotationSnapMargin = 0.04f;
     public void Grab()
     {
@@ -22,9 +24,9 @@ public class MonsterMovementBehaviour : MonoBehaviour, IGrabbable
         rigidBod.constraints = RigidbodyConstraints2D.FreezeRotation;
         StartCoroutine(Stand());
     }
-    public int GrabEffect()
+    public (Grabbable.GrabEffect, float) GetGrabEffect()
     {
-        return (int)rigidBod.mass;
+        return (grabEffect, grabVariable);
     }
     IEnumerator Stand()
     {
@@ -66,5 +68,4 @@ public class MonsterMovementBehaviour : MonoBehaviour, IGrabbable
             movement.Jump();
         }
     }
-
 }

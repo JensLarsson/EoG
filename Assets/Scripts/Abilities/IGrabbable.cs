@@ -6,6 +6,6 @@ public interface IGrabbable
 {
     void Grab();
     void Release();
-    int GrabEffect();
+    (Grabbable.GrabEffect, float) GetGrabEffect();
 
 }

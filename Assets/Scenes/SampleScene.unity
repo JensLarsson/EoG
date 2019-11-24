@@ -120,6 +120,106 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &3482904 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 114314442930208083, guid: 4631b49701352d1429e257b821db7b12,
+    type: 3}
+  m_PrefabInstance: {fileID: 114314441919321311}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &3482905
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3482904}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: acdd8ecdb9a790a4bbce1cef7c60af13, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &3482906
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3482904}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 917d02a1773b50a409a380873089b8a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3482907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3482904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a01951023e33145a883fe257d936bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  events:
+  - subscriptionName: OpenGate
+    action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3482911}
+          m_MethodName: SetIntVarriable
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  - subscriptionName: CloseGate
+    action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3482911}
+          m_MethodName: SetIntVarriable
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+--- !u!114 &3482911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3482904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca510d7e7cac3e34e8c040f2ff119f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variableName: RouteChoice
 --- !u!1 &48317237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,6 +1199,85 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &509123283
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114314442930208083, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_Name
+      value: Square (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208083, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4631b49701352d1429e257b821db7b12, type: 3}
 --- !u!1 &509318757 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9119089914069971373, guid: 5c74e5fff80a86d4c9ec090554fca97e,
@@ -1847,18 +2026,18 @@ MonoBehaviour:
   interaction: 1
   postTriggerAction: 1
   eventCalls:
-  - DestroyCage
+  - OpenGate
   eventParameter:
     stringParam: 
     intParam: 0
-    floatParam: 4
-    colourParam: {r: 1, g: 1, b: 1, a: 1}
+    floatParam: 0
+    colourParam: {r: 1, g: 0.06132078, b: 0.06132078, a: 1}
     posParam: {x: 0, y: 0}
     transformParam: {fileID: 0}
     timerParam:
       StartCall: 
-      timerTime: 0
-      EndCall: 
+      timerTime: 3
+      EndCall: CloseGate
   action:
     m_PersistentCalls:
       m_Calls: []
@@ -2230,23 +2409,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a01951023e33145a883fe257d936bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subscriptionName: DestroyCage
-  actions:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1192829300}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  events:
+  - subscriptionName: 
+    action:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!61 &1192829302
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2980,6 +3149,8 @@ MonoBehaviour:
     m_Bits: 512
   standSpeed: 120
   jumps: 1
+  grabEffect: 1
+  grabVariable: 2
   localTime: 1
 --- !u!114 &1731194287
 MonoBehaviour:
@@ -3119,7 +3290,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731194285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.299374, y: -2.1542234, z: 0}
+  m_LocalPosition: {x: 18.29, y: -2.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3307,10 +3478,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208083, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.68
+      value: 15.63
       objectReference: {fileID: 0}
     - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
         type: 3}
