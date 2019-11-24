@@ -631,7 +631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &303068051
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1016,6 +1016,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0b0c4f79fc9104cbb7e8c7e7a8c785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interaction: 1
+  postTriggerAction: 1
   eventCalls:
   - 
   eventParameter:
@@ -1025,13 +1027,15 @@ MonoBehaviour:
     colourParam: {r: 0.7169812, g: 0, b: 0.04904008, a: 1}
     posParam: {x: 0, y: 0}
     transformParam: {fileID: 0}
+    timerParam:
+      StartCall: 
+      timerTime: 0
+      EndCall: 
   action:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  postTriggerAction: 1
-  interactionType: 1
 --- !u!4 &478681273
 Transform:
   m_ObjectHideFlags: 0
@@ -1113,6 +1117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0b0c4f79fc9104cbb7e8c7e7a8c785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interaction: 1
+  postTriggerAction: 0
   eventCalls:
   - 
   eventParameter:
@@ -1122,13 +1128,15 @@ MonoBehaviour:
     colourParam: {r: 1, g: 1, b: 1, a: 1}
     posParam: {x: 0, y: 0}
     transformParam: {fileID: 0}
+    timerParam:
+      StartCall: 
+      timerTime: 0
+      EndCall: 
   action:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  postTriggerAction: 0
-  interactionType: 1
 --- !u!114 &509318764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1836,22 +1844,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0b0c4f79fc9104cbb7e8c7e7a8c785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interaction: 1
+  postTriggerAction: 1
   eventCalls:
-  - StartTimer
+  - DestroyCage
   eventParameter:
-    stringParam: DestroyCage
+    stringParam: 
     intParam: 0
     floatParam: 4
     colourParam: {r: 1, g: 1, b: 1, a: 1}
     posParam: {x: 0, y: 0}
     transformParam: {fileID: 0}
+    timerParam:
+      StartCall: 
+      timerTime: 0
+      EndCall: 
   action:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  postTriggerAction: 1
-  interactionType: 1
 --- !u!212 &779245701
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2968,6 +2980,7 @@ MonoBehaviour:
     m_Bits: 512
   standSpeed: 120
   jumps: 1
+  localTime: 1
 --- !u!114 &1731194287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3297,12 +3310,12 @@ PrefabInstance:
     - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.8139563
+      value: 20.68
       objectReference: {fileID: 0}
     - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8423929
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
         type: 3}
@@ -3348,6 +3361,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114314442930208080, guid: 4631b49701352d1429e257b821db7b12,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4631b49701352d1429e257b821db7b12, type: 3}

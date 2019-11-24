@@ -22,7 +22,10 @@ public class MonsterMovementBehaviour : MonoBehaviour, IGrabbable
         rigidBod.constraints = RigidbodyConstraints2D.FreezeRotation;
         StartCoroutine(Stand());
     }
-
+    public int GrabEffect()
+    {
+        return (int)rigidBod.mass;
+    }
     IEnumerator Stand()
     {
         while (Mathf.Abs(transform.rotation.z) > rotationSnapMargin)
@@ -54,7 +57,6 @@ public class MonsterMovementBehaviour : MonoBehaviour, IGrabbable
     private void LateUpdate()
     {
         rigidBod.velocity = rigidBod.velocity * localTime;
-        Debug.Log(rigidBod.velocity);
     }
     void Jump()
     {
@@ -64,4 +66,5 @@ public class MonsterMovementBehaviour : MonoBehaviour, IGrabbable
             movement.Jump();
         }
     }
+
 }

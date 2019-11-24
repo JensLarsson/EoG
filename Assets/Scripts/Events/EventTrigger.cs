@@ -9,10 +9,8 @@ public class EventTrigger : MonoBehaviour
     [Header("Trigger Options")]
     [SerializeField] Interactions interaction = Interactions.onButtonPress;
     enum Interactions { onEnter = 0, onButtonPress, onLeave };
-
-    public  InteractionType interactionType = InteractionType.Direct;
-    public static enum InteractionType { Direct = 0, PostTimer, PreAndPostTimer };
-
+    //[SerializeField] InteractionType interactionType = InteractionType.Direct;
+    //public enum InteractionType { Direct = 0, PreAndPostTimer };
     [SerializeField] Actions postTriggerAction = Actions.Nothing;
     enum Actions { Nothing = 0, DeleteObject, DeactivateTrigger };
 
@@ -27,8 +25,17 @@ public class EventTrigger : MonoBehaviour
         {
             if (eventCall != "")
             {
-                EventManager.TriggerEvent(eventCall, eventParameter);
-                action.Invoke();
+                if (eventParameter.timerParam.StartCall == "")
+                {
+                    EventManager.TriggerEvent(eventCall, eventParameter);
+                    action.Invoke();
+                }
+                else
+                {
+                    eventParameter.timerParam.StartCall = eventCall;
+                    EventManager.TriggerEvent("StartTimer", eventParameter);
+                    action.Invoke();
+                }
             }
             switch (postTriggerAction)
             {
@@ -77,20 +84,5 @@ public class EventTrigger : MonoBehaviour
         {
             Engage();
         }
-    }
-}
-
-[CustomEditor(typeof(EventTrigger))]
-public class MyScriptEditor : Editor
-{
-    void OnInspectorGUI()
-    {
-        EventTrigger myScript = target as EventTrigger;
-
-        myScript.interactionType = 
-
-        if (myScript.flag)
-            myScript.i = EditorGUILayout.IntSlider("I field:", myScript.i, 1, 100);
-
     }
 }

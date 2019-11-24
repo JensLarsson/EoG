@@ -13,6 +13,8 @@ public class EventParameter //Add more Event Parameter Variables here if needed
     public Color colourParam = Color.white;
     public Vector2 posParam;
     public Transform transformParam;
+    public timerPackage timerParam;
+    [HideInInspector] EventParameter endTimerEvent;
 }
 // Right now when creating and subscribing Events, the function delegated needs to pass an EventParameter! 
 // I will add a Function Overloads to remove this requirement in the future
