@@ -63,11 +63,15 @@ public class Telekinesis : IAbility
         }
         else
         {
-            grabbedObject.gameObject.layer = previousLayer;
+            var grabEffect = grabbed.GetGrabEffect();
+            if (grabEffect.Item1 == Grabbable.GrabEffect.SlowDown)
+            {
+                player.gameObject.GetComponent<Movement>().speed = uneditedSpeed;
+            }
+                grabbedObject.gameObject.layer = previousLayer;
             grabbedBody = null;
             grabbedObject = null;
             grabbed.Release();
-            player.gameObject.GetComponent<Movement>().speed = uneditedSpeed;
         }
     }
 
